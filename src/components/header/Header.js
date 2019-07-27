@@ -1,19 +1,20 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { AppBar,
+        Button,
         Toolbar,
         IconButton, 
         Typography, 
-        Badge,
-        Button, 
         MenuItem,
-        Menu
-        } 
+        Menu,
+        Link
+        }
 from '@material-ui/core';
 
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+
+import { Link as RouterLink } from 'react-router-dom';
 
 import AuxiliaryMenu from '../auxiliaryMenu/AuxiliaryMenu';
 
@@ -25,30 +26,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
-  },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   sectionDesktop: {
     display: 'none',
@@ -62,6 +39,12 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
+  toolbarLink: {
+    padding: theme.spacing(1),
+    marginTop: theme.spacing(1),
+    flexShrink: 0,
+    color: 'white'
+  }
 }));
 
 export default function Header() {
@@ -90,8 +73,8 @@ export default function Header() {
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
-  function handleClick () {
-
+  function handleClick() {
+    
   }
 
   const menuId = 'primary-search-account-menu';
@@ -122,17 +105,17 @@ export default function Header() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <AuxiliaryMenu/>
+        <Link component={RouterLink} to='/mainMarket'>
+          Main Market
+        </Link>
+      </MenuItem>
+      <MenuItem>
+        <Link component={RouterLink} to='/auxMarket'>
+          Auxiliary markets 
+        </Link>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="Account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
+     
         <p>Profile</p>
       </MenuItem>
     </Menu>
@@ -146,21 +129,31 @@ export default function Header() {
             Asset Market
           </Typography>
           <div className={classes.grow} />
-        {/*remove sectionDesktop so it wont disappear in mobile */}
           <div className={classes.sectionDesktop}>
-            <Button
-              href="#text-buttons"
-              className={classes.button}
-              onClick={handleClick}
-            >
-              Main Market
+            <Button>
+              <Link
+                color="secondary"
+                className={classes.toolbarLink}
+                component={RouterLink}
+                to='/mainMarket'
+                underline='none'
+              >
+                Main Market
+              </Link>
+            </Button>
+            <Button>
+              <Link
+                color="inherit"
+                href="#text-buttons"
+                className={classes.toolbarLink}
+                component={RouterLink}
+                to='/auxMarket'
+                underline='none'
+              > 
+                auxiliary Market
+              </Link>
             </Button>
             <AuxiliaryMenu/>
-            <IconButton aria-label="Show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
             <IconButton
               edge="end"
               aria-label="Account of current user"
