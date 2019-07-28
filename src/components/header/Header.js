@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 import { AppBar,
         Button,
         Toolbar,
@@ -14,6 +14,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Link as RouterLink } from 'react-router-dom';
 import AuxiliaryMenu from '../auxiliaryMenu/AuxiliaryMenu';
+import { ThemeProvider } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  color: theme.palette.text.primary
   },
   sectionDesktop: {
     display: 'none',
@@ -40,11 +42,16 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
     marginTop: theme.spacing(1),
     flexShrink: 0,
-    color: 'white'
+    color: theme.palette.text.primary
+  },
+  transparent:{
+    background: 'transparent',
+    boxShadow: 'none'
   }
 }));
 
 export default function Header() {
+  console.log("styles: ", useStyles());
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -66,7 +73,6 @@ export default function Header() {
   }
 
   function handleMobileMenuOpen(event) {
-    console.log("currentTargetn", event.currentTarget);
     setMobileMoreAnchorEl(event.currentTarget);
   }
 
@@ -119,8 +125,8 @@ export default function Header() {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static">
+    <div style={{width: '100%'}}>
+      <AppBar className={classes.transparent} position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h4" noWrap>
             Asset Market

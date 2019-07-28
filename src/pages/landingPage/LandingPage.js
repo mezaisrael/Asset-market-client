@@ -4,6 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import './LandingPage.css';
+import Header from '../../components/header/Header'
+import { ThemeProvider } from '@material-ui/styles';
+import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
 
 //might make into state
 let redirectPage;
@@ -22,6 +25,12 @@ function LandingPage() {
 		afterChange: current => setCurrSlide(current),
 		// autoplay: true,
 	};
+
+	const theme = createMuiTheme({
+	  palette: {
+	    type: 'dark',
+	  },
+	});
 	
 	//This is what I did to make slides anchor to the corresponding page 
 	const goToPage = () => {
@@ -44,20 +53,23 @@ function LandingPage() {
 	} else {
 
 	return(
-		<div className={'hero-image'}>
-			<div className={'landing-pg-carousel'}>
-				<Slider {...settings}>	
-					<div className='carousel-text'>
-						<h2>Main Market</h2>
-						<p>make 5% on auxilliary market fees</p>
-					</div>
-					<div className='carousel-text' onClick={goToPage}>
-						<h2>Auxiliary Markets</h2>
-						<p>own Auxiliary token and watch your investment grow</p>
-					</div>
-				</Slider>
+		<ThemeProvider theme={theme}>
+			<div className={'hero-image'}>
+				<Header/>
+				<div className={'landing-pg-carousel'}>
+					<Slider {...settings}>	
+						<div className='carousel-text'>
+							<h2>Main Market</h2>
+							<p>make 5% on auxilliary market fees</p>
+						</div>
+						<div className='carousel-text' onClick={goToPage}>
+							<h2>Auxiliary Markets</h2>
+							<p>own Auxiliary token and watch your investment grow</p>
+						</div>
+					</Slider>
+				</div>
 			</div>
-		</div>
+		</ThemeProvider>
 		);
 	}
 

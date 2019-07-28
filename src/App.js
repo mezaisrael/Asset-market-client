@@ -9,7 +9,6 @@ import './App.css';
 function App() {
   return (
   	<Router>
-    	<Header/>
     	<Switch>
     		<Route path='/' exact component={LandingPage}/>
     		<Route path='/mainMarket' component={MainMarket}/>
