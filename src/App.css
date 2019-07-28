@@ -32,3 +32,13 @@
     transform: rotate(360deg);
   }
 }
+
+.layout{
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #043751;
+}
+
+h1, h2, h3, h4{
+  font-weight: 100;
+}

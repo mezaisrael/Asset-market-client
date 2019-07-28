@@ -10,12 +10,9 @@ import { AppBar,
         Link
         }
 from '@material-ui/core';
-
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-
 import { Link as RouterLink } from 'react-router-dom';
-
 import AuxiliaryMenu from '../auxiliaryMenu/AuxiliaryMenu';
 
 const useStyles = makeStyles(theme => ({

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/header/Header';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LandingPage from './pages/landingPage/LandingPage';
-import MainMarket from './pages/MainMarket';
+import MainMarket from './pages/mainMarket/MainMarket';
 import AuxMarket from './pages/auxiliaryMarket/Auxiliary';
 import './App.css';
 
