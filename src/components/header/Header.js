@@ -125,7 +125,7 @@ export default function Header() {
   );
 
   return (
-    <div style={{width: '100%'}}>
+    <React.Fragment>
       <AppBar className={classes.transparent} position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h4" noWrap>
@@ -183,6 +183,6 @@ export default function Header() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </div>
+    </React.Fragment>
   );
 }
