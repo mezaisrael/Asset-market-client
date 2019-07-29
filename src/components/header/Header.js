@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     [theme.breakpoints.up('sm')]: {
       display: 'block',
+      fontWeight: 100
     },
   color: theme.palette.text.primary
   },
@@ -128,9 +129,11 @@ export default function Header() {
     <React.Fragment>
       <AppBar className={classes.transparent} position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h4" noWrap>
-            Asset Market
-          </Typography>
+          <Link component={RouterLink} to='/'>
+            <Typography variant="h4" className={classes.title} noWrap>
+              Asset Market
+            </Typography>
+          </Link>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <Button>
